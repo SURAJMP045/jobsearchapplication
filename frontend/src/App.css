@@ -1,0 +1,61 @@
+/* Layout wrapper to keep footer at bottom */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #1d3557;
+  padding: 0.8rem 2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #a8dadc;
+}
+
+/* Page content */
+main {
+  flex: 1;
+  padding: 1.5rem 2rem;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #1d3557;
+  color: #f1faee;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+}
+
+.footer a {
+  color: #a8dadc;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

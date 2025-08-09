@@ -1,0 +1,57 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar-links li {
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-links li:hover {
+  color: #facc15; /* yellow highlight on hover */
+}
+
+/* underline hover animation */
+.navbar-links li::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #facc15;
+  transition: width 0.3s ease;
+}
+
+.navbar-links li:hover::after {
+  width: 100%;
+}

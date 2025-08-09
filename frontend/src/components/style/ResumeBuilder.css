@@ -1,0 +1,20 @@
+.resume-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+  margin: auto;
+}
+
+.resume-builder h3 {
+  margin-top: 0;
+}
+
+.btn-primary {
+  background: #64748b;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
