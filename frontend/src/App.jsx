@@ -1,20 +1,23 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import ResumeBuilderPage from "./components/pages/ResumeBuilderPage";
-import Footer from "./components/Footer";
-import Jobs from "./components/Jobs";
+import React from 'react'
+import './App.css'
+import HeroSection from './components/HeroSection'
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/clerk-react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-export default function App() {
+
+const App = () => {
+
+  const {user,isLoaded,isSignedIn}=useUser()
+  if(!isSignedIn && isLoaded){
+  return <Navigate to={'/auth/sign-in'} />
+  }
+
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-  <Route path="/" element={<main><Jobs /></main>} />
-  <Route path="/resume-builder" element={<main><ResumeBuilderPage /></main>} />
-</Routes>
-
-      <Footer />
-    </Router>
-  );
+    <>
+      <HeroSection/>
+      <Outlet/>
+    </>
+  )
 }
+
+export default App
