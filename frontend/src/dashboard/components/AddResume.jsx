@@ -6,8 +6,11 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from "@/components/ui/dialog"
+
+import { Button } from "@/components/ui/button";
+import { Input } from '@/components/ui/input';
 
 const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false)
@@ -16,24 +19,24 @@ const AddResume = () => {
     <div>
       {/* Resume Card */}
       <div
-        className='p-14 py-24 items-center flex justify-center bg-slate-100 rounded-lg h-[280px] hover:scale-105 transition-all hover:shadow-md cursor-pointer'
+        className='p-7 py-12 items-center flex justify-center bg-slate-100 rounded-lg h-[280px] hover:scale-105 transition-all hover:shadow-md cursor-pointer'
         onClick={() => setOpenDialog(true)}
       >
-        <PlusSquare color="grey" size={48} />
+        <PlusSquare color="grey" size={30} />
       </div>
 
       {/* Dialog */}
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogTitle>Create New Resume</DialogTitle>
             <DialogDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
+              <p>Add a title for your new resume</p>
+              <Input className="my-2" placeholder="Eg.FullStack Resume" />
             </DialogDescription>
-            <div>
-              <Button>Create</Button>
-              <Button variant="ghost">Cancle</Button>
+            <div className='flex justify-end gap-5'>
+              <Button onClick={()=>setOpenDialog(false)}>Cancle</Button>
+              <Button  variant="ghost">Create</Button>
             </div>
           </DialogHeader>
         </DialogContent>
