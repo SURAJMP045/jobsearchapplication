@@ -4,10 +4,11 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { ClerkProvider } from '@clerk/clerk-react';
-import {RouterProvider , createBrowserRouter} from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SignInPage from './auth/sign-in/SignInPage.jsx';
-import Home from './home/Home.jsx'
+import Home from './home/Home.jsx';
 import Dash from './dashboard/Dash.jsx';
+import ProtectedRoute from "../src/dashboard/ProtectedRoute";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -17,29 +18,32 @@ if (!PUBLISHABLE_KEY) {
 
 const router = createBrowserRouter([
   {
-    element:<App/>,
-    children:[
+    element: <App />,
+    children: [
       {
-        path:'/dashboard',
-        element: <Dash/>
+        path: '/',
+        element: <Home />,
       },
-    ]
+    ],
   },
   {
-        path:'/',
-        element: <Home/>
+        path: '/dashboard',
+       element: (
+          <ProtectedRoute>
+            <Dash />
+          </ProtectedRoute>
+        ),
       },
   {
-    path:'auth/sign-in',
-    element:<SignInPage/>
-  }
-])
+    path: '/auth/sign-in',
+    element: <SignInPage />,
+  },
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      {/* <App /> */}
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </ClerkProvider>
   </StrictMode>
 );

@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-content {
+  flex: 1; /* Push footer to bottom when content is short */
+}

@@ -1,23 +1,20 @@
-import React from 'react'
-import './App.css'
-import HeroSection from './components/HeroSection'
-import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/clerk-react';
-import { Navigate, Outlet } from 'react-router-dom';
+// App.jsx
+import React from "react";
+import { Outlet, Navigate } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-
-const App = () => {
-
-  const {user,isLoaded,isSignedIn}=useUser()
-  if(!isSignedIn && isLoaded){
-  return <Navigate to={'/auth/sign-in'} />
-  }
+export default function App() {
+  const { isLoaded, isSignedIn } = useUser();
+  if (!isLoaded) return null;
+  if (!isSignedIn) return <Navigate to="/auth/sign-in" />;
 
   return (
     <>
-      <HeroSection/>
-      <Outlet/>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
-  )
+  );
 }
-
-export default App

@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 export default function HeroSection() {
   return (
     <>
-      <div className="bg-white h-screen flex flex-col items-center text-center">
-        <Navbar/>
+      <div className="bg-white flex flex-col items-center text-center">
         {/* Badge */}
         <div className="flex items-center space-x-2 mb-4 bg-slate-100 px-1.5 py-1.5 rounded-full mt-30">
           <span className="bg-blue-200 text-blue-500 text-xs font-semibold px-3 py-1.5 rounded-full">
@@ -78,7 +77,6 @@ export default function HeroSection() {
         
         <FeaturesSection/>
 
-        <Footer/>
       </div>
     </>
   );
