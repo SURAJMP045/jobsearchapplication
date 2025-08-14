@@ -8,12 +8,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-
 import { Button } from "@/components/ui/button";
 import { Input } from '@/components/ui/input';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false)
+  const [resumeTitle, setResumeTitle] = useState("")
+
+  const onCreate = () => {
+    const uuid = uuidv4()
+    console.log(resumeTitle, uuid);
+  }
 
   return (
     <div>
@@ -31,12 +37,16 @@ const AddResume = () => {
           <DialogHeader>
             <DialogTitle>Create New Resume</DialogTitle>
             <DialogDescription>
-              <p>Add a title for your new resume</p>
-              <Input className="my-2" placeholder="Eg.FullStack Resume" />
+              Add a title for your new resume
+              <Input
+                className="my-2"
+                placeholder="Eg. FullStack Resume"
+                onChange={(e) => setResumeTitle(e.target.value)}
+              />
             </DialogDescription>
-            <div className='flex justify-end gap-5'>
-              <Button onClick={()=>setOpenDialog(false)}>Cancle</Button>
-              <Button  variant="ghost">Create</Button>
+            <div className='flex justify-end gap-5 mt-4'>
+              <Button variant="ghost" onClick={() => setOpenDialog(false)}>Cancel</Button>
+              <Button disabled={!resumeTitle} onClick={onCreate}>Create</Button>
             </div>
           </DialogHeader>
         </DialogContent>
